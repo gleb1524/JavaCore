@@ -1,3 +1,5 @@
+package ru.karaban;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -48,6 +50,20 @@ public class Main {
          */
         int[] test = {4, 2, 5, 5, 6, 7, 8, 5};
         foundFirstSum(test, 10);
+
+        /*
+        Task3
+            Реализовать функцию нечеткого поиска
+
+         */
+        System.out.println(fuzzySearch("car", "ca6$$#_rtwheel")); // true
+        System.out.println(fuzzySearch("cwhl", "cartwheel")); // true
+        System.out.println(fuzzySearch("cwhee", "cartwheel")); // true
+        System.out.println(fuzzySearch("cartwheel", "cartwheel")); // true
+        System.out.println(fuzzySearch("cwheeel", "cartwheel")); // false
+        System.out.println(fuzzySearch("lw", "cartwheel")); // false
+        System.out.println(fuzzySearch("lw", "cartwheelw")); // true
+
     }
 
     @Getter
@@ -95,5 +111,22 @@ public class Main {
                 }
             }
         }
+    }
+
+    public static boolean fuzzySearch(String arg, String repo) {
+
+        int countOfContains = 0;
+        int indexOfContains = 0;
+
+        for (char ch : arg.toCharArray()) {
+
+            while (indexOfContains < repo.length()) {
+                if (ch == repo.charAt(indexOfContains++)) {
+                    countOfContains++;
+                    break;
+                }
+            }
+        }
+        return countOfContains == arg.length();
     }
 }
