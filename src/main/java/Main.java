@@ -40,6 +40,14 @@ public class Main {
             System.out.println("Key : " + stringLongEntry.getKey() +
                     "\n" + "Value : " + stringLongEntry.getValue());
         }
+
+         /*
+        Task2
+
+            [3, 4, 2, 7], 10 -> [3, 7] - вывести пару менно в скобках, которые дают сумму - 10
+         */
+        int[] test = {4, 2, 5, 5, 6, 7, 8, 5};
+        foundFirstSum(test, 10);
     }
 
     @Getter
@@ -73,4 +81,19 @@ public class Main {
             new Person(7, "Amelia"),
             new Person(8, "Amelia"),
     };
+
+    public static void foundFirstSum(int[] inputArray, int sum) {
+
+        int[] arr = new int[2];
+        for (int i = 0; i < inputArray.length; i++) {
+            for (int j = 0; j < inputArray.length; j++) {
+                if (i != j && inputArray[i] + inputArray[j] == sum) {
+                    arr[0] = inputArray[i];
+                    arr[1] = inputArray[j];
+                    System.out.println(Arrays.toString(arr));
+                    return;
+                }
+            }
+        }
+    }
 }
